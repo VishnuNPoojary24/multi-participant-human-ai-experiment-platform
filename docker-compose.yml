@@ -1,0 +1,35 @@
+services:
+  database:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: experiment
+      POSTGRES_USER: experiment
+      POSTGRES_PASSWORD: experiment
+    ports: ["5432:5432"]
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U experiment -d experiment"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  backend:
+    build: ./backend
+    env_file:
+      - path: ./backend/.env
+        required: false
+    environment:
+      DATABASE_URL: postgresql+psycopg://experiment:experiment@database:5432/experiment
+      CONFIG_PATH: /app/config.yml
+    volumes: ["./config.yml:/app/config.yml:ro"]
+    ports: ["8000:8000"]
+    depends_on:
+      database:
+        condition: service_healthy
+  frontend:
+    build: ./frontend
+    environment:
+      VITE_BACKEND_URL: http://backend:8000
+    ports: ["5173:5173"]
+    depends_on: [backend]
+volumes:
+  postgres_data:

@@ -1,0 +1,18 @@
+experiment:
+  name: human-ai-decision-study
+  participants: 3
+  rounds: 2
+  round_duration_seconds: 60
+
+participants:
+  - id: A
+    type: ai
+  - id: B
+    type: ai
+  - id: C
+    type: human
+
+ai_agent:
+  enabled: true
+  strategy: groq
+  response_delay_seconds: 2

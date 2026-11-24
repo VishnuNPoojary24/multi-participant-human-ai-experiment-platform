@@ -1,0 +1,88 @@
+/* Let the participant experience use the available desktop width. */
+.shell {
+  width: min(calc(100% - clamp(32px, 6vw, 96px)), 1400px);
+  max-width: none;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell > footer {
+  margin-top: auto;
+}
+
+.result { scroll-margin-block: 24px; }
+
+.winner-card {
+  display: inline-flex;
+  min-width: min(100%, 320px);
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 14px 0 20px;
+  padding: 14px 22px 10px;
+  border: 1px solid #cbded2;
+  border-left: 5px solid #3f8066;
+  border-radius: 8px;
+  background: linear-gradient(120deg, #f0f7f1, #fff);
+  box-shadow: 0 8px 24px #285e4e12;
+}
+
+.winner-tag {
+  border-radius: 999px;
+  padding: 5px 10px;
+  background: #285e4e;
+  color: #fff;
+  font: 600 10px 'DM Mono', monospace;
+  letter-spacing: .14em;
+}
+
+.winner-card .winner { margin: 6px 0 0; }
+
+.result-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #edf0eb;
+}
+
+.sessionbar { align-items: center; gap: 16px; }
+.sessionbar > span { display: flex; align-items: center; gap: 8px; }
+.sessionbar > div { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 14px; }
+.sessionbar .session-id { font-size: 11px; letter-spacing: .02em; overflow-wrap: anywhere; text-transform: none; }
+
+.entry,
+.voting {
+  max-width: 780px;
+}
+
+@media (min-width: 1100px) {
+  header { height: 84px; }
+  .hero { max-width: 780px; padding: 68px 0 46px; }
+  .hero h1 { font-size: 68px; }
+  .panel { padding: 34px 40px; }
+  .waiting { padding: 28px 40px; }
+  .room .transcript { max-height: min(58vh, 680px); }
+  .entry,
+  .voting { max-width: 820px; }
+}
+
+@media (max-width: 800px) {
+  .players { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .player { padding: 11px 9px; gap: 8px; }
+  .section-head { gap: 14px; }
+  .count { white-space: nowrap; }
+}
+
+@media (max-width: 600px) {
+  .shell { width: auto; margin: 0; padding: 0 17px; }
+  .sessionbar { align-items: flex-start; flex-direction: column; }
+  .sessionbar > span { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .sessionbar > div { justify-content: flex-start; }
+  .players { grid-template-columns: 1fr; }
+  .section-head { align-items: flex-start; }
+  .count { white-space: normal; }
+  .hero h1 { font-size: 43px; }
+  .panel { padding: 21px 18px; }
+}
+

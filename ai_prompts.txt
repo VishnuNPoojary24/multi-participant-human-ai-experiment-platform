@@ -1,0 +1,5 @@
+1. Start from requirements: Review the official assessment, make a requirement checklist, and propose a minimal architecture before implementation.
+2. Keep the solution focused: Implement the approved core flow within the stated effort, document design decisions, and make it runnable locally with Docker.
+3. Protect the study design: Make discussion contextual and natural while keeping participant identities neutral and avoiding unsupported claims.
+4. Keep bot replies relevant: Limit participant bot responses to the Decision Maker study and politely redirect unrelated questions.
+5. Review the participant experience: Improve responsive layout, message and results scrolling, and make the final decision clear to participants.
